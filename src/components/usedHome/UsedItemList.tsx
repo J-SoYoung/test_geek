@@ -20,7 +20,7 @@ const UsedItemList = () => {
   }, []);
 
   return (
-    <div className="p-8 pt-4 grid grid-cols-2 gap-4 mb-24 h-[100vh]">
+    <div className="p-8 pt-4 grid grid-cols-2 gap-4 mb-24">
       {usedItems.map((item) => (
         <UsedItemCard key={item.itemId} item={item} />
       ))}

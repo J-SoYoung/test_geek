@@ -30,7 +30,9 @@ const UsedHome = () => {
       <p className="text-left pl-3 pl-8">
         전체<span>10</span>
       </p>
-      <UsedItemList />
+      <div className="h-[100vh]">
+        <UsedItemList />
+      </div>
     </div>
   );
 };
