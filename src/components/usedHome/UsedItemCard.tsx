@@ -9,7 +9,7 @@ interface UsedItemCardProps {
 const UsedItemCard = ({ item }: UsedItemCardProps) => {
   return (
     <Link
-      to={`/usedHome/detail/${item.itemId}`}
+      to={`/usedHome/detail/${item.id}`}
       className=" p-3 rounded-md cursor-pointer"
     >
       <img
