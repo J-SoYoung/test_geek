@@ -10,10 +10,10 @@ const UsedItemCard = ({ item }: UsedItemCardProps) => {
   return (
     <Link
       to={`/usedHome/detail/${item.itemId}`}
-      className=" p-3 rounded-md  cursor-pointer"
+      className=" p-3 rounded-md cursor-pointer"
     >
       <img
-        src={item.imageUrl}
+        src={item.imageArr[0]}
         alt={item.itemName}
         className="w-full h-48 object-cover rounded-md mb-2"
       />
