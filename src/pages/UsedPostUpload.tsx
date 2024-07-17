@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { used_DB } from "../api/usedFirebase";
 import { push, ref, set } from "firebase/database";
+import { uploadCloudImage } from "../api/cloudinay";
 
 const UsedPostUpload: React.FC = () => {
   const [previewImages, setPreviewImages] = useState<string[]>([]);
@@ -14,12 +15,15 @@ const UsedPostUpload: React.FC = () => {
   const [description, setDescription] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0];
       const urlFile = URL.createObjectURL(file);
-      console.log(urlFile);
       setPreviewImages((prevImages) => prevImages.concat(urlFile));
+
+      const cloudImage = await uploadCloudImage(file);
+      setUploadImages((prevImages) => prevImages.concat(cloudImage));
+      console.log(cloudImage);
 
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -27,12 +31,11 @@ const UsedPostUpload: React.FC = () => {
         const base64data = reader.result;
         if (base64data) {
           setUploadImages((prevImages) => prevImages.concat(base64data));
-          console.log(base64data);
         }
       };
     }
   };
-
+  console.log(uploadImages);
   const removeImage = (index: number) => {
     URL.revokeObjectURL(previewImages[index]); // 이미지 URL 해제
     setPreviewImages((prevImages) => prevImages.filter((_, i) => i !== index));
