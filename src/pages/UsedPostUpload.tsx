@@ -22,20 +22,10 @@ const UsedPostUpload: React.FC = () => {
       setPreviewImages((prevImages) => prevImages.concat(urlFile));
 
       const cloudImage = await uploadCloudImage(file);
-      setUploadImages((prevImages) => prevImages.concat(cloudImage));
       console.log(cloudImage);
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        if (base64data) {
-          setUploadImages((prevImages) => prevImages.concat(base64data));
-        }
-      };
+      setUploadImages((prevImages) => prevImages.concat(cloudImage));
     }
   };
-  console.log(uploadImages);
   const removeImage = (index: number) => {
     URL.revokeObjectURL(previewImages[index]); // 이미지 URL 해제
     setPreviewImages((prevImages) => prevImages.filter((_, i) => i !== index));
