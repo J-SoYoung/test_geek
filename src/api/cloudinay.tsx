@@ -11,6 +11,6 @@ export async function uploadCloudImage(file: File): Promise<string> {
       body: data,
     }
   );
-  const json = await res.json()
-  return json.secure_url
+  const json = await res.json();
+  return json.secure_url;
 }
