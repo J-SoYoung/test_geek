@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import axios from "axios";
+import { getDatabase } from "firebase/database";
 
 interface SearchResult {
   items: Video[];
@@ -59,6 +60,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const database = getDatabase(app);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 

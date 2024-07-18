@@ -1,5 +1,6 @@
 // 중고 데이터 타입
 export interface MyUsedItemType {
+  id: string;
   itemId: string;
   itemName: string;
   size: string;
